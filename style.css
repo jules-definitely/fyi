@@ -379,3 +379,14 @@ p{max-width:640px;margin-bottom:16px;color:#2b2a28;}
   .case-grid{grid-template-columns:1fr;gap:2px 0;}
   .case-label{padding-top:12px;}
 }
+
+/* ---- print ---- */
+@media print{
+  body::before{display:none;}
+  .sidebar{position:static;height:auto;border-right:1px solid #000;}
+  main{border-left:none;padding:24px 0 0 24px;}
+  h1,h2,h3{animation:none;}
+  .rule{animation:none;}
+  a{text-decoration:underline;}
+  .case-outcome{border-left-color:#000;}
+}
