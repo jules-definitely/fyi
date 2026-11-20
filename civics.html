@@ -50,7 +50,7 @@
     <h1>Turning a static government question list into a study system.</h1>
     <p class="lede">I became a U.S. citizen in 2024. To prepare for the civics test, I built my own way of memorizing it, then shared the method with a few colleagues preparing for their own interviews.</p>
     <p>Turning that method into an app was a challenge I set myself, to learn the build process from end to end. The official study material is a flat list: 128 questions on the current test, many with several accepted answers. I rebuilt it as structured data with explicit rules, then directed AI tools to turn it into an interactive study app.</p>
-    <p class="textlinks"><a href="https://jules-definitely.github.io/civics-mnemonic-app/" target="_blank" rel="noopener">Open the app</a><a href="https://github.com/jules-definitely/civics-mnemonic-app/blob/main/CASE_STUDY.md" target="_blank" rel="noopener">Read the full case study</a></p>
+    <p class="textlinks"><a href="https://jules-definitely.github.io/civics-mnemonic-app/" target="_blank" rel="noopener">Open the app</a></p>
 
     <div class="shots">
       <figure><img src="img/civics-cover.jpg" alt="The app's home screen: 'Learn the citizenship test as facts, not questions.'" loading="lazy"><figcaption>Facts, not questions</figcaption></figure>
@@ -60,8 +60,35 @@
 
     <hr class="rule">
 
+    <h2>By the numbers</h2>
+    <ul class="perspective">
+      <li><strong>128 questions, 124 cards.</strong> Four pairs of official questions share the same answer, so each pair is taught once.</li>
+      <li><strong>279 accepted answers became 111 taught facts</strong> in the curated data: 60% less to memorize, with every alternative kept on record.</li>
+      <li><strong>65 questions</strong> accept more than one answer. Each was resolved with a scored, documented choice.</li>
+      <li><strong>121 of 124 cards</strong> carry an icon row that spells out the answer. The other three keep a clue that already worked: a song, a word pattern and a translation.</li>
+    </ul>
+
+    <hr class="rule">
+
     <h2>The challenge</h2>
     <p>Existing prep tools copy the official format: question, a list of accepted answers, a quiz. That asks people to memorize more than they need to, ties recall to one wording of each question, and treats 128 items as unrelated even when many share a person, a number or a pattern. The problem was the format, not the content.</p>
+
+    <h2>Choices and trade-offs</h2>
+    <div class="case-grid">
+      <p class="case-label">Audience</p>
+      <div class="case-body"><p>Fluent English speakers who know mainstream Western pop culture, including long-term immigrants from English-speaking countries. Narrowing the audience let the memory hooks be specific instead of generic; ESL learners are a later version, not an afterthought.</p></div>
+
+      <p class="case-label">Positioning</p>
+      <div class="case-body"><p>Serious learning for unserious people: exact content, playful hooks. Accuracy is protected by keeping the fact and the hook in separate layers.</p></div>
+
+      <p class="case-label">Interaction</p>
+      <div class="case-body"><p>A book you reread, with self-testing as an option rather than the default. Quiz-first was built, tested against how people actually study, and replaced.</p></div>
+
+      <p class="case-label">Success measure</p>
+      <div class="case-body"><p>Coming back voluntarily, not self-reported pass rates, which are too unreliable to collect.</p></div>
+    </div>
+
+    <hr class="rule">
 
     <h2>The system</h2>
     <p>Every stage has an explicit rule, so it gives the same result whether I apply it or an AI tool does.</p>
@@ -76,11 +103,21 @@
       <div class="case-body"><p>Facts that share a person are learned as a set (five facts whose answer is "the President"). Facts that are easy to confuse sit side by side, capped at a few per group so the card never becomes the overload it's meant to fix.</p></div>
 
       <p class="case-label">Icon clues</p>
-      <div class="case-body"><p>Every icon stands for a word in the answer, so the row reads like a rebus: two seats times fifty states equals 100 senators. Symbols keep one meaning across the app, and facts about sensitive history get plain, literal icons with no wordplay.</p></div>
+      <div class="case-body"><p>Every icon stands for a word in the answer, so the row reads like a rebus. The test for every card: could you rebuild the answer from the icons alone?</p></div>
 
       <p class="case-label">Trust</p>
-      <div class="case-body"><p>The plain fact and the memory hook are separate layers, so the hook can be playful without risking accuracy. Officeholder answers are flagged to check before an interview, and every fact traces back to the official list.</p></div>
+      <div class="case-body"><p>The plain fact and the memory hook are separate layers, so the hook can be playful without risking accuracy. Officeholder answers carry an asterisk and a note to check them before an interview. Facts about sensitive history get plain, literal icons with no wordplay.</p></div>
     </div>
+
+    <h3 class="subhead">One fact, start to finish</h3>
+    <ol class="steps">
+      <li><strong>Official:</strong> "How many U.S. senators are there?" Answer: "One hundred (100)."</li>
+      <li><strong>Restate:</strong> "There are 100 U.S. senators."</li>
+      <li><strong>Check:</strong> "Two senators per state" already exists elsewhere, so the cards link instead of teaching 100 as an isolated number.</li>
+      <li><strong>Group:</strong> paired with 435 House members, two numbers about the same institution.</li>
+      <li><strong>Icon clue:</strong> 2 seats × 50 states = 100. The icons derive the answer, so it never has to be memorized raw.</li>
+      <li><strong>Study:</strong> hide the text, say the fact from the icons, tap to check.</li>
+    </ol>
 
     <hr class="rule">
 
@@ -91,17 +128,42 @@
       <div class="case-body"><p>The first build was a well-made quiz, which was the wrong product. I hadn't stated how it would be used, so the tool defaulted to the standard for the category. I defined the interaction model and rebuilt it as a book you reread.</p></div>
 
       <p class="case-label">Vague direction</p>
-      <div class="case-body"><p>Asked for icons, the tool produced topic labels: one scroll stood in for 18 different facts. I rewrote the direction as a rule anyone can test, <em>could you rebuild the answer from the icons alone?</em>, and redrew the full set against it.</p></div>
+      <div class="case-body"><p>Asked for icons, the tool produced topic labels: one scroll stood in for 18 different facts. I rewrote the direction as a rule anyone can test and redrew the full set against it.</p></div>
 
       <p class="case-label">Quality gates</p>
-      <div class="case-body"><p>Checks against the whole set, not one section at a time, and a plain statement of anything that couldn't be verified.</p></div>
+      <div class="case-body"><p>Checks against the whole set, not one section at a time; every card rendered and reviewed on a phone before publishing; and a plain statement of anything that couldn't be verified.</p></div>
     </div>
 
     <hr class="rule">
 
-    <p class="case-outcome">All 128 questions covered by 124 cards; four pairs share an answer and are taught once. In the curated data, 279 accepted answers became 111 taught facts: 60% less to memorize. 121 of 124 cards carry an icon row that spells out the answer.</p>
+    <h2>Refining the rules</h2>
+    <p>Once every card was built, I went through the app as a learner and logged what didn't trigger recall. The fixes weren't one-off tweaks. Each became a rule applied across the whole set, so the system got stricter rather than messier.</p>
+    <div class="case-grid">
+      <p class="case-label">People</p>
+      <div class="case-body"><p>A generic person icon tells you nothing. Every person now gets a clue to their name: a chain link for Link-coln, a ham for Ham-ilton, a washing machine for Wash-ington, or the name people actually use, like FDR and MLK.</p></div>
 
-    <p class="closing">With AI, the leverage is in the spec and the quality gates, not the prompt. The valuable work was writing rules precise enough to apply the same way 128 times.</p>
+      <p class="case-label">Countries</p>
+      <div class="case-body"><p>Swords say "war," not which country, and the country is usually the answer. Countries are now flags, and war-entry facts read as two-line stories: USA entered two wars, Korea and Vietnam, to stop communism.</p></div>
+
+      <p class="case-label">Meanings</p>
+      <div class="case-body"><p>A symbol keeps one meaning everywhere. An up-and-right arrow always means rights; a broken chain always means freedom; a globe always means Secretary of State.</p></div>
+    </div>
+    <figure class="wide"><img src="img/civics-clues.jpg" alt="Six icon rows from the app: USA entered 2 wars, Korea and Vietnam, to stop communism; Link-coln and the Emancipation Proclamation; MLK fought for civil rights; Japan attacks Pearl Harbor and the USA enters World War II; Ham-ilton was the first Secretary of the Treasury; World War II in the 1900s." loading="lazy"><figcaption>Name clues, flags and two-line stories, after the review round</figcaption></figure>
+
+    <hr class="rule">
+
+    <h2>How I'd measure it</h2>
+    <p>If this were taken further, these are the signals I'd use to judge whether the system works:</p>
+    <ul class="perspective">
+      <li><strong>Return:</strong> do people come back on their own, on three or more separate days before their interview?</li>
+      <li><strong>Hook strength:</strong> which facts keep getting re-revealed? Those hooks are weak and get reworked first.</li>
+      <li><strong>Rebus test:</strong> with the text hidden, can someone new to the material say the fact from the icons?</li>
+      <li><strong>Accuracy:</strong> zero errors against the official list, and time-sensitive answers updated within a week of any change.</li>
+    </ul>
+
+    <p class="case-outcome">The result is a complete study app: all 128 questions on 124 cards, each pairing a plain, defensible fact with an icon clue that spells out the answer, built on rules precise enough to apply the same way every time.</p>
+
+    <p class="closing">With AI, the leverage is in the spec and the quality gates, not the prompt. The valuable work was writing rules precise enough to apply the same way 128 times, and checks that catch what looks right but isn't.</p>
 
   </main>
 </div>
