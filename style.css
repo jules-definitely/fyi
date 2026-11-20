@@ -368,6 +368,13 @@ p{max-width:640px;margin-bottom:16px;color:#2b2a28;}
 .wide img{display:block;width:100%;height:auto;border:1px solid var(--line);}
 .wide figcaption{font-size:12px;color:var(--graphite);margin-top:10px;}
 
+.case-split{display:grid;grid-template-columns:minmax(0,1fr) 220px;gap:32px;align-items:start;max-width:960px;}
+.case-split .case-grid{max-width:none;}
+.phone{margin:0;}
+.phone img{display:block;width:100%;height:auto;border:1px solid var(--line);}
+.phone figcaption{font-size:12px;color:var(--graphite);margin-top:10px;}
+@media (max-width:1100px){.case-split{grid-template-columns:1fr;}.phone{max-width:280px;}}
+
 /* ---- mobile ---- */
 
 .mobile-nav{display:none;}
