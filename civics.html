@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Julia Weikel | civics app</title>
+<meta name="description" content="Turning a static government question list into a study system: a personal build, directed through AI tools.">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Julia Weikel | civics app">
+<meta property="og:description" content="Turning a static government question list into a study system: a personal build, directed through AI tools.">
+<meta property="og:url" content="https://juliaweikel.fyi/civics.html">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="shell">
+  <aside class="sidebar">
+    <div>
+      <div class="portrait">
+        <img src="portrait.jpg" alt="Julia Weikel">
+      </div>
+      <a href="index.html" class="brandmark">Julia Weikel
+        <span class="role">Marketing systems, brand &amp; partner strategy</span>
+      </a>
+      <nav class="pagenav">
+      <a href="index.html">home</a>
+      <a href="strategy.html">strategy</a>
+      <a href="brand.html">brand</a>
+      <a href="content.html">content</a>
+      <a href="ai-systems.html">ai systems</a>
+      <a href="civics.html" class="active">civics app</a>
+      </nav>
+    </div>
+    <div class="sidebar-foot">
+      Seattle, WA<br>
+      <a href="https://www.linkedin.com/in/juliaweikel/">linkedin.com/in/juliaweikel</a>
+    </div>
+  </aside>
+  <main>
+    <div class="mobile-nav">
+    <a href="index.html">home</a>
+    <a href="strategy.html">strategy</a>
+    <a href="brand.html">brand</a>
+    <a href="content.html">content</a>
+    <a href="ai-systems.html">ai systems</a>
+    <a href="civics.html" class="active">civics app</a>
+    </div>
+
+    <p class="eyebrow">Personal build</p>
+    <h1>Turning a static government question list into a study system.</h1>
+    <p class="lede">I'm preparing for my own U.S. citizenship interview. The official study material is a flat list: 128 questions, many with several accepted answers. I rebuilt it as structured data with explicit rules, then directed AI tools to turn it into an interactive study app.</p>
+    <p class="textlinks"><a href="https://jules-definitely.github.io/civics-mnemonic-app/">Open the app</a><a href="https://github.com/jules-definitely/civics-mnemonic-app/blob/main/CASE_STUDY.md">Read the full case study</a></p>
+
+    <div class="shots">
+      <figure><img src="img/civics-cover.jpg" alt="The app's home screen: 'Learn the citizenship test as facts, not questions.'" loading="lazy"><figcaption>Facts, not questions</figcaption></figure>
+      <figure><img src="img/civics-card.jpg" alt="A study card reading 'There are 100 U.S. senators,' with icons showing 2 seats times 50 states equals 100." loading="lazy"><figcaption>Icons that spell the answer</figcaption></figure>
+      <figure><img src="img/civics-hidden.jpg" alt="The same card with the fact blurred and a 'Tap to reveal' button, leaving only the icons." loading="lazy"><figcaption>Hide the fact, recall from the icons</figcaption></figure>
+    </div>
+
+    <hr class="rule">
+
+    <h2>The challenge</h2>
+    <p>Existing prep tools copy the official format: question, a list of accepted answers, a quiz. That asks people to memorize more than they need to, ties recall to one wording of each question, and treats 128 items as unrelated even when many share a person, a number or a pattern. The problem was the format, not the content.</p>
+
+    <h2>The system</h2>
+    <p>Every stage has an explicit rule, so it gives the same result whether I apply it or an AI tool does.</p>
+    <div class="case-grid">
+      <p class="case-label">Facts, not questions</p>
+      <div class="case-body"><p>Each page states one fact. Several official question wordings link to the same fact, so it can be recalled however it's asked.</p></div>
+
+      <p class="case-label">One answer each</p>
+      <div class="case-body"><p>Where USCIS accepts several answers, each option is scored on distinctiveness, how easy it is to picture, brevity and hook potential. One is taught; the rest stay on record. Every choice is checked against the whole set, which caught a duplicate a section-by-section review missed.</p></div>
+
+      <p class="case-label">Grouping</p>
+      <div class="case-body"><p>Facts that share a person are learned as a set (five facts whose answer is "the President"). Facts that are easy to confuse sit side by side, capped at a few per group so the card never becomes the overload it's meant to fix.</p></div>
+
+      <p class="case-label">Icon clues</p>
+      <div class="case-body"><p>Every icon stands for a word in the answer, so the row reads like a rebus: two seats times fifty states equals 100 senators. Symbols keep one meaning across the app, and facts about sensitive history get plain, literal icons with no wordplay.</p></div>
+
+      <p class="case-label">Trust</p>
+      <div class="case-body"><p>The plain fact and the memory hook are separate layers, so the hook can be playful without risking accuracy. Officeholder answers are flagged to check before an interview, and every fact traces back to the official list.</p></div>
+    </div>
+
+    <hr class="rule">
+
+    <h2>Directing AI</h2>
+    <p>I owned the audience, the rules, the answer choices and the quality bar. AI tools handled the volume: drafting at scale, writing code, drawing icons. Where it broke was more instructive than where it worked.</p>
+    <div class="case-grid">
+      <p class="case-label">Wrong product</p>
+      <div class="case-body"><p>The first build was a well-made quiz, which was the wrong product. I hadn't stated how it would be used, so the tool defaulted to the standard for the category. I defined the interaction model and rebuilt it as a book you reread.</p></div>
+
+      <p class="case-label">Vague direction</p>
+      <div class="case-body"><p>Asked for icons, the tool produced topic labels: one scroll stood in for 18 different facts. I rewrote the direction as a rule anyone can test, <em>could you rebuild the answer from the icons alone?</em>, and redrew the full set against it.</p></div>
+
+      <p class="case-label">Quality gates</p>
+      <div class="case-body"><p>Checks against the whole set, not one section at a time, and a plain statement of anything that couldn't be verified.</p></div>
+    </div>
+
+    <hr class="rule">
+
+    <p class="case-outcome">All 128 questions covered by 124 cards; four pairs share an answer and are taught once. In the curated data, 279 accepted answers became 111 taught facts: 60% less to memorize. 121 of 124 cards carry an icon row that spells out the answer.</p>
+
+    <p class="closing">With AI, the leverage is in the spec and the quality gates, not the prompt. The valuable work was writing rules precise enough to apply the same way 128 times.</p>
+
+  </main>
+</div>
+</body>
+</html>

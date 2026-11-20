@@ -343,6 +343,22 @@ p{max-width:640px;margin-bottom:16px;color:#2b2a28;}
 
 .pressline .desc{color:var(--graphite);}
 
+/* ---- civics page: links and screenshots ---- */
+
+.textlinks{display:flex;flex-wrap:wrap;gap:8px 28px;margin:4px 0 40px;font-size:15px;}
+.textlinks a{color:var(--ink);border-bottom:1px solid var(--brick);padding-bottom:2px;transition:color 0.2s ease;}
+.textlinks a:hover{color:var(--brick);}
+
+.shots{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;max-width:760px;margin:0 0 8px;}
+.shots figure{margin:0;}
+.shots img{display:block;width:100%;height:auto;border:1px solid var(--line);}
+.shots figcaption{font-size:12px;color:var(--graphite);margin-top:10px;letter-spacing:0.01em;}
+
+@media (max-width:860px){
+  .shots{grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;}
+  .shots figcaption{font-size:11px;}
+}
+
 /* ---- mobile ---- */
 
 .mobile-nav{display:none;}
