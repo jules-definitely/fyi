@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Julia Weikel | hintlist</title>
+<meta name="description" content="A wish list app for couples, designed around one rule: the person you're shopping for never sees what you've planned. In production.">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Julia Weikel | hintlist">
+<meta property="og:description" content="A wish list app for couples, designed around one rule: the person you're shopping for never sees what you've planned. In production.">
+<meta property="og:url" content="https://juliaweikel.fyi/hintlist.html">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="shell">
+  <aside class="sidebar">
+    <div>
+      <div class="portrait">
+        <img src="portrait.jpg" alt="Julia Weikel">
+      </div>
+      <a href="index.html" class="brandmark">Julia Weikel
+        <span class="role">Marketing systems, brand &amp; partner strategy</span>
+      </a>
+      <nav class="pagenav">
+      <a href="index.html">home</a>
+      <a href="strategy.html">strategy</a>
+      <a href="brand.html">brand</a>
+      <a href="content.html">content</a>
+      <a href="ai-systems.html">ai systems</a>
+      <a href="civics.html">civics app</a>
+      <a href="hintlist.html" class="active">hintlist</a>
+      </nav>
+    </div>
+    <div class="sidebar-foot">
+      Seattle, WA<br>
+      <a href="https://www.linkedin.com/in/juliaweikel/">linkedin.com/in/juliaweikel</a>
+    </div>
+  </aside>
+  <main>
+    <div class="mobile-nav">
+    <a href="index.html">home</a>
+    <a href="strategy.html">strategy</a>
+    <a href="brand.html">brand</a>
+    <a href="content.html">content</a>
+    <a href="ai-systems.html">ai systems</a>
+    <a href="civics.html">civics app</a>
+    <a href="hintlist.html" class="active">hintlist</a>
+    </div>
+
+    <p class="eyebrow">Personal build · In production</p>
+    <h1>A wish list for two, built around keeping the surprise.</h1>
+    <p class="lede">Hintlist is a gift list app for couples. Each person keeps a list, and each partner gets a private planning space on top of the other's list: notes, sizes, prices, what's been bought. The person you're shopping for never sees any of it.</p>
+    <p>I'm building it to work through a full product the way I'd run one at work: start from a problem, research what exists, set principles, prototype, then build on real infrastructure. This page documents the method while the build is underway, so it's honest about what's done and what isn't.</p>
+    <p class="textlinks"><a href="https://hintlist-eight.vercel.app/" target="_blank" rel="noopener">Open the working prototype</a></p>
+
+    <hr class="rule">
+
+    <h2>The problem</h2>
+    <p>Wish list apps already exist, and they solve the obvious part well: save a product link, share the list, mark items reserved so nobody buys the same thing twice. Reviewing the category showed two consistent gaps.</p>
+    <ul class="perspective">
+      <li><strong>They're built for groups and stores.</strong> Families, Secret Santa, registries. A couple is a different relationship: two people, one each way, year after year.</li>
+      <li><strong>Anything without a link is an afterthought.</strong> "Get my watch repaired," "a new puppy," or a trip can't be pasted from a store. Several apps require a photo, price and URL even for a manual entry.</li>
+      <li><strong>The giver gets a checkbox, not a tool.</strong> "Mark as reserved" is where most apps stop. The person actually doing the shopping has nowhere to keep sizes, notes, a budget or the question they want to ask.</li>
+    </ul>
+
+    <h2>Principles</h2>
+    <div class="case-grid">
+      <p class="case-label">One line to add</p>
+      <div class="case-body"><p>A wish is a single line of text. A photo, link or price makes it richer but is never required, and a bare note still looks finished rather than like an incomplete form.</p></div>
+
+      <p class="case-label">Privacy by design</p>
+      <div class="case-body"><p>Everything the giver adds is private to the giver, and that rule is enforced by the database, not just hidden in the interface.</p></div>
+
+      <p class="case-label">Restraint</p>
+      <div class="case-body"><p>Two tabs and an account menu. No feeds, badges, streaks or inbox. The interface is close to monochrome so the wishes themselves carry the visual interest.</p></div>
+
+      <p class="case-label">Sign in when it matters</p>
+      <div class="case-body"><p>You can start a list without an account. Google sign-in happens when you invite your partner, because that's the first moment an account does anything for you.</p></div>
+    </div>
+
+    <hr class="rule">
+
+    <h2>The system</h2>
+    <p>The core idea is one list with two views. Each wish is stored once; the giver's layer is stored separately and attached to it.</p>
+    <div class="case-grid">
+      <p class="case-label">Mine</p>
+      <div class="case-body"><p>Your own list, in your order. A small line explains who can see it: your partner sees this list, never what's been bought from it. A menu on each wish lets you mark it received or remove it if you've changed your mind.</p></div>
+
+      <p class="case-label">Their list, two ways</p>
+      <div class="case-body"><p>Your partner's tab has a switch. "As they see it" shows their list exactly as they built it, read-only. "Your plan" is the private workspace: notes, prices, a running budget, an "I bought this" mark, and your own gift ideas they'll never see. A blood-orange label on that view says plainly that your partner can't see it.</p></div>
+
+      <p class="case-label">Questions, two ways</p>
+      <div class="case-body"><p>You can ask openly about an item ("which brand?"), or send a secret this-or-that, like "green, blue or yellow?", without revealing what it's for. Answers appear in one card at the top of the recipient's list, then attach privately to the item.</p></div>
+
+      <p class="case-label">Sizes by category</p>
+      <div class="case-body"><p>People aren't one size. The profile holds a size and a fit note per category: medium in jackets with room for a sweater, large in tees, extra large in trench coats. When a wish is clothing, the matching size appears on the giver's view of that item.</p></div>
+
+      <p class="case-label">Profiles that fill in over time</p>
+      <div class="case-body"><p>Add a coat with no jacket size on file and the app asks once, inline. Answer a secret pick and it can save to your profile. Your partner can guess a preference and you confirm it. Nobody fills out a long form.</p></div>
+    </div>
+
+    <h3 class="subhead">One wish, start to finish</h3>
+    <ol class="steps">
+      <li><strong>Add:</strong> I type "charcoal wool overcoat." The app recognizes a jacket and asks for my jacket size, once.</li>
+      <li><strong>View:</strong> my partner sees the coat on my list, plus "Jackets: M · room for a sweater."</li>
+      <li><strong>Plan:</strong> in his private view he adds a note and a price, which feed his budget total.</li>
+      <li><strong>Ask:</strong> he sends a secret pick, "charcoal or camel?" I answer without knowing it's about the coat.</li>
+      <li><strong>Buy:</strong> he marks it bought. My list doesn't change.</li>
+      <li><strong>Receive:</strong> after the holiday, I mark it received and it moves to a record of gifts.</li>
+    </ol>
+
+    <hr class="rule">
+
+    <h2>How it's built</h2>
+    <p>The prototype taught the product; the build needs real infrastructure: accounts, data that syncs between two people, rules about who can see what, and code that runs on a server. Every tool was chosen to run on a free tier for a two-person app, with costs flagged before anything is added.</p>
+    <div class="case-grid">
+      <p class="case-label">Claude</p>
+      <div class="case-body"><p>Product partner for research, design and code: reviewing the category, pressure-testing ideas, building the clickable prototype on a design canvas, then writing and committing the application code.</p></div>
+
+      <p class="case-label">ChatGPT</p>
+      <div class="case-body"><p>Early concept riffing, including a spec for an earlier recipe idea that was set aside.</p></div>
+
+      <p class="case-label">Next.js and React</p>
+      <div class="case-body"><p>The application itself, written in TypeScript. A web app that works on any phone, without app store approval.</p></div>
+
+      <p class="case-label">GitHub</p>
+      <div class="case-body"><p>Version control. Every change is a commit, so any decision can be traced or rolled back.</p></div>
+
+      <p class="case-label">Vercel</p>
+      <div class="case-body"><p>Hosting. Each change pushed to GitHub redeploys the live app automatically.</p></div>
+
+      <p class="case-label">Supabase</p>
+      <div class="case-body"><p>The Postgres database and accounts. Row-level security policies make the privacy rule structural: the giver's notes, purchase marks and private ideas can only be read by the giver, and a secret question never records which item it's about anywhere the recipient can see.</p></div>
+
+      <p class="case-label">Google sign-in</p>
+      <div class="case-body"><p>Accounts through Google, asking only for name and email. Narrow permissions keep the consent screen short and avoid Google's extra review for sensitive data.</p></div>
+    </div>
+
+    <h3 class="subhead">Why not the same setup as the civics app</h3>
+    <p>The civics app is a set of static files: everyone sees the same thing, so it can be served directly from this site. Hintlist needs accounts, private per-person data and server-side code, which static hosting can't provide. That's the reason for a separate host and a database.</p>
+
+    <hr class="rule">
+
+    <h2>Decisions along the way</h2>
+    <p>Most of the useful work was deciding what not to build, and noticing where the first version was wrong.</p>
+    <div class="case-grid">
+      <p class="case-label">Changing the project</p>
+      <div class="case-body"><p>The starting idea was a recipe converter. Research showed the core feature already exists in several apps, and the discovery feature depends on content licensing a personal project can't secure. I moved to a problem with a clearer gap.</p></div>
+
+      <p class="case-label">Designing from observation</p>
+      <div class="case-body"><p>I wanted the ease of Apple's Freeform. Rather than decompiling it, I named the principle I was after, adding should never feel like a form, and designed to that.</p></div>
+
+      <p class="case-label">Parking a bigger idea</p>
+      <div class="case-body"><p>Midway through, the concept grew into a notebook for everyone you know: birthdays, allergies, the thing they collect. It's a real product, and a much bigger one. I kept the data model centered on a person so it can grow there later, and kept version one to couples.</p></div>
+
+      <p class="case-label">Three views, two tabs</p>
+      <div class="case-body"><p>Using the prototype, I realized the giver needs to see their partner's list clean, exactly as built, as well as their own plan on top of it. I chose a switch inside one tab over a third tab, because both views are the same list in two modes.</p></div>
+
+      <p class="case-label">Copy that tested badly</p>
+      <div class="case-body"><p>"Mark bought" read as a person named Mark. "Ask a pick" made sense only to the people who designed it. Both were renamed after the first look at the live app.</p></div>
+    </div>
+
+    <hr class="rule">
+
+    <h2>Status and plan</h2>
+    <div class="case-grid">
+      <p class="case-label">Done</p>
+      <div class="case-body"><p>Product principles, a clickable prototype of every core screen, the application code on sample data, the live deployment, and a database schema with the privacy rules written in.</p></div>
+
+      <p class="case-label">In progress</p>
+      <div class="case-body"><p>Connecting the database, Google sign-in, and the partner invite, so two real people can use it this holiday season.</p></div>
+
+      <p class="case-label">Next</p>
+      <div class="case-body"><p>Link previews that pull a product's photo and price, photo uploads, notifications for questions, and visual identity.</p></div>
+
+      <p class="case-label">Later</p>
+      <div class="case-body"><p>A "hints, not lists" path for people who are uncomfortable writing a list, price alerts, and suggested next steps for wishes that aren't products, like finding a watch repair shop.</p></div>
+    </div>
+
+    <h2>How I'd measure it</h2>
+    <ul class="perspective">
+      <li><strong>Surprise kept:</strong> zero cases of a recipient seeing a purchase, checked against the database rules, not just the screens.</li>
+      <li><strong>Effortless adding:</strong> most wishes added in one line, with no required field ever blocking a save.</li>
+      <li><strong>Questions answered:</strong> how often secret and open questions get a reply, and how quickly.</li>
+      <li><strong>Return:</strong> both partners coming back before an occasion, not just the one who set it up.</li>
+    </ul>
+
+    <p class="closing">The method carries over from the civics app: write the rules down precisely, let AI tools handle the volume, and test what you built against how a real person reads it.</p>
+
+  </main>
+</div>
+</body>
+</html>
