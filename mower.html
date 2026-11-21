@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Julia Weikel | mower ledger</title>
+<meta name="description" content="An inventory and profit system for a one-man Honda mower flipping operation, built around one idea: a part isn't a cost until it goes into a mower.">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Julia Weikel | mower ledger">
+<meta property="og:description" content="An inventory and profit system for a one-man Honda mower flipping operation, built around one idea: a part isn't a cost until it goes into a mower.">
+<meta property="og:url" content="https://juliaweikel.fyi/mower.html">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="shell">
+  <aside class="sidebar">
+    <div>
+      <div class="portrait">
+        <img src="portrait.jpg" alt="Julia Weikel">
+      </div>
+      <a href="index.html" class="brandmark">Julia Weikel
+        <span class="role">Marketing systems, brand &amp; partner strategy</span>
+      </a>
+      <nav class="pagenav">
+      <a href="index.html">home</a>
+      <a href="strategy.html">strategy</a>
+      <a href="brand.html">brand</a>
+      <a href="content.html">content</a>
+      <a href="ai-systems.html">ai systems</a>
+      <a href="civics.html">civics app</a>
+      <a href="hintlist.html">hintlist</a>
+      <a href="mower.html" class="active">mower ledger</a>
+      </nav>
+    </div>
+    <div class="sidebar-foot">
+      Seattle, WA<br>
+      <a href="https://www.linkedin.com/in/juliaweikel/">linkedin.com/in/juliaweikel</a>
+    </div>
+  </aside>
+  <main>
+    <div class="mobile-nav">
+    <a href="index.html">home</a>
+    <a href="strategy.html">strategy</a>
+    <a href="brand.html">brand</a>
+    <a href="content.html">content</a>
+    <a href="ai-systems.html">ai systems</a>
+    <a href="civics.html">civics app</a>
+    <a href="hintlist.html">hintlist</a>
+    <a href="mower.html" class="active">mower ledger</a>
+    </div>
+
+    <p class="eyebrow">Personal build · Live</p>
+    <h1>An inventory and profit system for a one-man mower flipping operation.</h1>
+    <p class="lede">My husband has a very white-collar job and a very blue-collar hobby. When restoring his vintage Mustang stopped scratching the itch, he found something more niche: buying tired Honda walk-behind mowers, bringing them back, and selling them on. Mower Ledger tracks every mower, every part and every sale, and says exactly what each one made.</p>
+    <p>I built it in an evening, as a surprise, to work through a real product end to end: a messy problem, a data model, real infrastructure, and a design language with a point of view.</p>
+    <p class="textlinks"><a href="https://mower-ledger.vercel.app/demo" target="_blank" rel="noopener">Try the demo, with sample mowers</a></p>
+
+    <div class="shots">
+      <figure><img src="img/mower-lineup.jpg?v=1" alt="The home screen, titled The Lineup: total profit of $1,521.50 across 5 sales, 3 mowers in inventory with $240.80 tied up, and a red ticker of recent sales." loading="lazy"><figcaption>The lineup: profit first</figcaption></figure>
+      <figure><img src="img/mower-sold.jpg?v=1" alt="A sold mower's page: a line-drawn mower with a red $600 price-gun sticker, model HRC216, a red SOLD band dated Oct 25, and the start of its profit breakdown." loading="lazy"><figcaption>Every mower is a spec sheet</figcaption></figure>
+      <figure><img src="img/mower-inventory.jpg?v=1" alt="The Inventory page, framed by line-drawn tools on a pegboard: $211.70 on hand, and air filters at $4.25 a piece with 18 on hand and 2 used." loading="lazy"><figcaption>Inventory, costed per piece</figcaption></figure>
+    </div>
+
+    <hr class="rule">
+
+    <h2>The problem</h2>
+    <p>He's bought about 15 mowers and sold about 9. He knew what each one made, but only in his head. Parts come from Honda in bulk, 20 air filters at a time, so the true cost of any single repair was spread across packs, receipts and memory.</p>
+    <ul class="perspective">
+      <li><strong>Bulk buying hides the real cost.</strong> An $85 pack of filters isn't the cost of any one mower, so per-mower profit was always an estimate.</li>
+      <li><strong>Reseller apps are built for something else.</strong> The category tracks items bought and sold as-is. None are built around repairing an item with stock bought in bulk.</li>
+      <li><strong>The whole picture lived nowhere.</strong> What went into each mower, what's still on the shelf, and whether the hobby pays for itself.</li>
+    </ul>
+
+    <h2>The core idea</h2>
+    <p>This looked like a notes problem but is really a cost-allocation problem. Bulk parts are inventory, an asset on a shelf, with a per-piece cost: $85 for 20 filters is $4.25 each. The moment a job uses one, $4.25 is charged to that mower and the shelf count drops by one. Profit per mower becomes exact without anyone doing math, and unused stock never makes a sale look worse than it was.</p>
+
+    <hr class="rule">
+
+    <h2>How it works</h2>
+    <div class="case-grid">
+      <p class="case-label">The lineup</p>
+      <div class="case-body"><p>The home screen opens on total profit, then mowers in inventory and the money tied up in them. Below is a gallery of every mower, filterable by in the shop, listed and sold. Each carries a model number in order of purchase and a price-gun sticker: blue for the asking price, red once sold.</p></div>
+
+      <p class="case-label">Intake</p>
+      <div class="case-body"><p>A photo, the model, purchase price, date, where it came from, and its condition at purchase, picked from one-tap chips like "won't start" or "bag torn."</p></div>
+
+      <p class="case-label">Work that asks about cost</p>
+      <div class="case-body"><p>Common jobs are one tap. Anything that replaces a part asks where the part came from: from inventory (charged at per-piece cost and taken off the shelf count), bought for this job (enter what it cost), or already on hand ($0). Any job can be back-dated, and its cost moves with it.</p></div>
+
+      <p class="case-label">Listing and selling</p>
+      <div class="case-body"><p>Listing records the asking price, the sites it's on (FB Marketplace, OfferUp, Craigslist and others) and the profit at that price. Selling records the price, date and which site it sold through, then shows sale price minus purchase price minus everything charged to it.</p></div>
+
+      <p class="case-label">Inventory</p>
+      <div class="case-body"><p>Everything on the shelf, entered by the pack or by the piece, with on-hand and used counts that update as jobs use parts. "Add more" restocks an item.</p></div>
+
+      <p class="case-label">The books</p>
+      <div class="case-body"><p>Gross sales, minus every mower bought, every part bought and every other expense, equals net cash. Beside it, "still holding" shows what unsold mowers and shelf parts are worth at cost, so an early negative reads as investment, not loss.</p></div>
+
+      <p class="case-label">Records</p>
+      <div class="case-body"><p>Once there's enough history, the app crowns its own superlatives: biggest profit, best return, quickest flip, the big project, steal of a deal and longest in the shop.</p></div>
+    </div>
+
+    <div class="shots">
+      <figure><img src="img/mower-part-prompt.jpg?v=1" alt="The Log work sheet for New air filter, asking where the part came from: from inventory, bought for this job, or had it already. Air filter from inventory is selected, 18 on hand at $4.25." loading="lazy"><figcaption>A part job asks where the part came from</figcaption></figure>
+      <figure><img src="img/mower-worklog.jpg?v=1" alt="A mower's status set to sold, its listing sites, condition at purchase, and a work log where each job shows its cost: wheels $48, oil change $7, spark plug $3.80." loading="lazy"><figcaption>The work log carries its own costs</figcaption></figure>
+      <figure><img src="img/mower-books.jpg?v=1" alt="Records on a pale blue band, biggest profit and best return of 411%, then The Books: sales $2,130, mowers bought, inventory bought, other expenses, net cash +$1,069 and still holding $452.50." loading="lazy"><figcaption>Records and the books</figcaption></figure>
+    </div>
+
+    <hr class="rule">
+
+    <h2>How it's built</h2>
+    <p>The whole stack runs on free plans with no build step, with costs flagged before anything is added.</p>
+    <div class="case-grid">
+      <p class="case-label">Claude</p>
+      <div class="case-body"><p>Product partner for the data model, design directions and code: prototyping, writing and committing the app, and testing each change against sample data before it shipped.</p></div>
+
+      <p class="case-label">GitHub and Vercel</p>
+      <div class="case-body"><p>Version control and hosting. Every change pushed to GitHub redeploys the live app in about a minute.</p></div>
+
+      <p class="case-label">Supabase</p>
+      <div class="case-body"><p>The database and photo storage, syncing live between phones. Only emails on an allowed list can read or write, and that rule is enforced by the database itself, not just the screen.</p></div>
+
+      <p class="case-label">Google sign-in</p>
+      <div class="case-body"><p>One tap to get in, with no new account to make.</p></div>
+
+      <p class="case-label">Google Sheets backup</p>
+      <div class="case-body"><p>A script in a Google Sheet he owns copies the whole ledger every night into Summary, Mowers, Inventory and Expenses tabs, with no button to press. The app shows when the last copy ran. The nightly copy also keeps the free database active through the off-season.</p></div>
+    </div>
+
+    <hr class="rule">
+
+    <h2>Design direction</h2>
+    <p>The humor is in taking a lawn mower completely seriously. After a luxury watch look read as too on-the-nose and a carmaker-clean look as too plain, I landed on a spec-sheet language borrowed from Japanese stationery and streetwear, where ordinary objects are labelled like collector's items.</p>
+    <ul class="perspective">
+      <li><strong>Paper and ink:</strong> warm cream, black hairline rules, all-caps names and monospace numbers.</li>
+      <li><strong>Palette:</strong> Honda racing red, white and blue, faded as if it were a diffusion line.</li>
+      <li><strong>Flipper details:</strong> price-gun stickers, oval buttons, superscript counts and a big clock in the footer.</li>
+      <li><strong>Hand-made touches:</strong> a wobbly line-drawn mower stands in for missing photos, and doodled tools hang on a pegboard around the inventory.</li>
+      <li><strong>One moment of joy:</strong> marking a mower sold stamps a SOLD sticker with the profit, the doodle mower drives across the screen and red, white and blue paper falls.</li>
+    </ul>
+
+    <div class="shots">
+      <figure><img src="img/mower-gallery.jpg?v=1" alt="The gallery: line-drawn mowers in square frames with status tags and blue and red price stickers, labelled by model number." loading="lazy"><figcaption>The gallery</figcaption></figure>
+      <figure><img src="img/mower-sold-moment.jpg?v=1" alt="The sold moment: a red price-gun sticker reading SOLD $240 with the profit, red, white and blue paper falling, and the doodle mower driving across the screen." loading="lazy"><figcaption>The sold moment</figcaption></figure>
+    </div>
+
+    <hr class="rule">
+
+    <h2>Decisions along the way</h2>
+    <div class="case-grid">
+      <p class="case-label">Prototype first</p>
+      <div class="case-body"><p>I validated the data model as a Claude artifact in about an hour. When the requirement became "no extra accounts to use it," I moved it to GitHub, Vercel and Supabase, still free.</p></div>
+
+      <p class="case-label">Capture cost at the moment of work</p>
+      <div class="case-body"><p>Logging the job is where the part gets charged, so costs never depend on remembering a receipt later.</p></div>
+
+      <p class="case-label">Two kinds of money</p>
+      <div class="case-body"><p>Profit per sale answers "was that one worth it." Net cash and still holding answer "is the hobby paying for itself."</p></div>
+
+      <p class="case-label">Write it for the user</p>
+      <div class="case-body"><p>Early labels were written about him ("when he got it"). He's the one using it, so they became "condition at purchase" and "purchase price."</p></div>
+
+      <p class="case-label">Records that earn it</p>
+      <div class="case-body"><p>With one mower, it won every record by default. Records now wait for a few flips, and "steal of a deal" became the best sale-to-purchase multiple rather than the cheapest buy.</p></div>
+    </div>
+
+    <h2>What's next</h2>
+    <ul class="perspective">
+      <li><strong>Before and after:</strong> a second photo and a one-line story for each mower.</li>
+      <li><strong>A scrapbook:</strong> every flip, collected.</li>
+    </ul>
+
+    <p class="closing">The same method as the civics app and Hintlist: find the real problem under the stated one, write the rules down precisely, and test what you built against how a real person uses it.</p>
+
+  </main>
+</div>
+</body>
+</html>
